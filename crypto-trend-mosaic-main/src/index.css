@@ -1,0 +1,217 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --positive: 142 76% 45%;
+    --positive-foreground: 0 0% 100%;
+
+    --negative: 358 76% 59%;
+    --negative-foreground: 0 0% 100%;
+
+    --neutral: 210 16% 32%;
+    --neutral-foreground: 215 20.2% 65.1%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --positive: 142 76% 45%;
+    --positive-foreground: 0 0% 100%;
+
+    --negative: 358 76% 59%;
+    --negative-foreground: 0 0% 100%;
+
+    --neutral: 210 16% 32%;
+    --neutral-foreground: 215 20.2% 65.1%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #0a0b10;
+    color: #e0e0e0;
+  }
+}
+
+@layer components {
+  .dark-glass {
+    @apply bg-[#111827]/70 backdrop-blur-md border border-white/5 shadow-sm;
+  }
+
+  .price-up {
+    @apply text-[#00ff95] animate-number-increment;
+  }
+
+  .price-down {
+    @apply text-[#ff009a] animate-number-decrement;
+  }
+
+  .price-neutral {
+    @apply text-neutral-foreground;
+  }
+
+  .crypto-card {
+    @apply relative overflow-hidden transition-all duration-300 ease-in-out hover:shadow-md;
+  }
+
+  .crypto-card::before {
+    content: "";
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out bg-gradient-to-r from-[#00ff95]/5 to-transparent;
+  }
+
+  .crypto-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .chart-container {
+    @apply w-full h-full overflow-hidden transition-all duration-500 ease-in-out;
+  }
+
+  .wallet-card {
+    @apply relative overflow-hidden transition-all duration-300 ease-in-out;
+  }
+
+  .transaction-item {
+    @apply transition-all duration-300 ease-in-out hover:bg-white/5;
+  }
+
+  /* Dark theme components */
+  .dark-stat-card {
+    @apply rounded p-2 transition-all duration-300 hover:bg-white/5;
+  }
+
+  .dark-tabs {
+    @apply bg-black/30 border-b border-white/10;
+  }
+
+  .dark-skeleton {
+    @apply bg-white/5;
+  }
+
+  /* Neon effects and hover animations */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-glow {
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  
+  .neon-glow {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+  }
+  
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Add keyframe animations for numbers */
+@keyframes number-increment {
+  0% { 
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes number-decrement {
+  0% { 
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Reset the #root styles to match the dark theme */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background-color: #0a0b10;
+}
